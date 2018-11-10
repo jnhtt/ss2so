@@ -72,7 +72,7 @@ public static class MasterEditor
     private static void CreateMasterScript(string masterName, string jsonString)
     {
         MasterElementClassCreator.Create(masterName, jsonString);
-        MasterCollectionClassCreator.Create(masterName, jsonString);
+        MasterElementCollectionClassCreator.Create(masterName, jsonString);
     }
 
     private static void CreateMasterData(string masterName, string jsonString)
@@ -88,8 +88,8 @@ public static class MasterEditor
             Type type = GetTypeByClassName(masterElementCollectionType);
             object result = type.InvokeMember("LoadFromJson", System.Reflection.BindingFlags.InvokeMethod, null, null, new object[] { jsonString });
 
-            var masterCollection = (UnityEngine.Object)Convert.ChangeType(result, type);
-            AssetDatabase.CreateAsset(masterCollection, string.Format("Assets/Resources/MasterData/{0}.asset", masterName));
+            var masterElementCollection = (UnityEngine.Object)Convert.ChangeType(result, type);
+            AssetDatabase.CreateAsset(masterElementCollection, string.Format("Assets/Resources/MasterData/{0}.asset", masterName));
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();

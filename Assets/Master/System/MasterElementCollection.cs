@@ -13,7 +13,7 @@ namespace Master
 
 
     [Serializable]
-    public class MasterCollection<TKey, TValue> : ScriptableObject where TValue : MasterElement<TKey>
+    public class MasterElementCollection<TKey, TValue> : ScriptableObject where TValue : MasterElement<TKey>
     {
         [SerializeField]
         protected List<TValue> masterList;
@@ -41,7 +41,7 @@ namespace Master
             return null;
         }
 
-        public static T LoadFromJson<T>(T instance, string jsonString) where T : MasterCollection<TKey, TValue>
+        public static T LoadFromJson<T>(T instance, string jsonString) where T : MasterElementCollection<TKey, TValue>
         {
             var wrapper = JsonUtility.FromJson<MasterElementArray<TValue>>(jsonString);
             var master = instance;

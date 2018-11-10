@@ -4,7 +4,7 @@ using System;
 namespace Master
 {
     [Serializable]
-    public partial class MasterTestCollection : MasterCollection<uint, MasterTest>
+    public partial class MasterTestCollection : MasterElementCollection<uint, MasterTest>
     {
         
         public static MasterTestCollection LoadFromJson(string jsonString)
